@@ -1,7 +1,7 @@
 import                                              pandas as pd
-from paraphraseGeneratorClient import               paraPharaseGenerator
-from paraphraseGeneratorClient import               modelAndTokenizerInitializer
-from paraphraseInputGeneratorClient import          paraphraseInputSentenceGenerator
+from databalancer.paraphraseGeneratorClient import               paraPharaseGenerator
+from databalancer.paraphraseGeneratorClient import               modelAndTokenizerInitializer
+from databalancer.paraphraseInputGeneratorClient import          paraphraseInputSentenceGenerator
 
 
 import matplotlib.pyplot                            as plt
