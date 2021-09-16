@@ -1,6 +1,6 @@
 .. raw:: html
 
-   <img align="right" width="auto" height="auto" src="https://github.com/pradeepdev-1995/databalancer/blob/master/logo/logo.png">
+   <img align="right" width="400" height="auto" src="https://github.com/pradeepdev-1995/databalancer/blob/master/logo/logo.png">
 
 
 Data balancer
