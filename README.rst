@@ -1,6 +1,6 @@
 .. raw:: html
 
-   <img align="right" width="auto" height="auto" src="https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/imbalancedDatset.png">
+   <img align="right" width="auto" height="auto" src="https://github.com/pradeepdev-1995/databalancer/blob/master/logo/logo.png">
 
 
 Data balancer
@@ -52,7 +52,7 @@ Output
 ------
 
 .. image:: https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/imbalancedDatset.png
-    :width: 400
+    :width: 500
     :alt: imbalanced dataset pie plot
 
 ------
@@ -83,6 +83,6 @@ To show the balanced dataset class count distribution, run the code below
 Output
 ------
 
-.. image:: https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/imbalancedDatset.png
-    :width: 400
+.. image:: https://github.com/pradeepdev-1995/databalancer/blob/master/images/balancedDataset.png
+    :width: 500
     :alt: balanced dataset pie plot
