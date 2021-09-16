@@ -12,25 +12,25 @@ Databalancer is the python library using in machine learning applications to bal
 * By default these paraphrases are generated using the *ramsrigouthamg/t5_paraphraser* model (You can read more about the model from [Huggingface official documentation](https://huggingface.co/ramsrigouthamg/t5_paraphraser)
 * Databalancer also provides another method called *classCountVisualization* To show the dataset class count distribution
 
-##Installation
+## Installation
 
 Install the `databalancer` package with `pip`
 
      pip install databalancer
 
-##Compatibility
+## Compatibility
 
 Databalancer is only compatable with python 3.6.9 or above.
 
 
-##Quick Start
+## Quick Start
 The library databalancer provides two different functionalities
 
 1 - classCountVisualization
 
 2 - balanceDataset
 
-###classCountVisualization
+### classCountVisualization
 
 ```python
 #Import the classCountVisualization from the 'databalancer' module
@@ -41,11 +41,11 @@ classCountVisualization("traindata.csv")
 
 ```
 
-###Output
+### Output
 
 ![Imbalanced dataset pie plot](https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/imbalancedDatset.png?raw=true "Imbalanced dataset pie plot")
 
-###balanceDataset
+### balanceDataset
 ```python
 #Import the balanceDataset from the 'databalancer' module
 from databalancer import balanceDataset
@@ -64,4 +64,4 @@ from databalancer import classCountVisualization
 classCountVisualization("balanced_data.csv")
 
 ```
-<img src="https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/balancedDataset.png" width="600" height="500">
+<img src="https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/balancedDataset.png" width="800" height="500">
