@@ -1,4 +1,4 @@
-# Data balancer
+# Databalancer
 
 Databalancer is the python library using in machine learning applications to balance the imbalanced text classification datasets before the model training
 
@@ -9,8 +9,8 @@ Databalancer is the python library using in machine learning applications to bal
 * Databalancer is able to balance any imbalanced text classification datasets
 * If the given dataset is imbalanced then while balancing no existing data will remove but new data will be generated and added to the dataset
 * For a particular class the newly generated data will be the paraphrases of the existing data in that particular class
-* By default these paraphrases are generated using the *ramsrigouthamg/t5_paraphraser* model (You can read more about the model from [Huggingface official documentation](https://huggingface.co/ramsrigouthamg/t5_paraphraser)
-* Databalancer also provides another method called *classCountVisualization* To show the dataset class count distribution
+* By default these paraphrases are generated using the *ramsrigouthamg/t5_paraphraser* model (You can read more about the model from [Huggingface official documentation](https://huggingface.co/ramsrigouthamg/t5_paraphraser))
+* Databalancer also provides another method called *classCountVisualization* to show the dataset class count distribution
 
 ## Installation
 
