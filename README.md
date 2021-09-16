@@ -64,4 +64,5 @@ from databalancer import classCountVisualization
 classCountVisualization("balanced_data.csv")
 
 ```
-![Balanced dataset pie plot](https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/balancedDatset.png?raw=true "Balanced dataset pie plot")
+
+![Balanced dataset pie plot](https://github.com/pradeepdev-1995/databalancer/blob/master/images/balancedDataset.png?raw=true "Balanced dataset pie plot")
