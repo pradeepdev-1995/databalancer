@@ -1,6 +1,6 @@
 .. raw:: html
 
-   <img align="right" width="500" height="400" src="https://github.com/pradeepdev-1995/databalancer/blob/master/logo/logo.png">
+   <img align="right" width="500" height="200" src="https://github.com/pradeepdev-1995/databalancer/blob/master/logo/logo.png">
 
 
 Data balancer
@@ -84,5 +84,5 @@ Output
 ------
 
 .. image:: https://github.com/pradeepdev-1995/databalancer/blob/master/images/balancedDataset.png
-    :width: 600
+    :width: 700
     :alt: balanced dataset pie plot
