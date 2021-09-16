@@ -1,6 +1,17 @@
 import                                          torch
 from transformers import                        T5ForConditionalGeneration,T5Tokenizer
 
+'''
+Generate paraphrase of a sentence using T5 paraphrase model.
+Default parameters provided for the T5ForConditionalGeneration class are as below 
+pad_to_max_length=True,
+return_tensors="pt",
+do_sample=True,
+max_length=256,
+top_k=120,
+top_p=0.98,
+early_stopping=True
+'''
 
 def set_seed(seed):
   torch.manual_seed(seed)
@@ -18,11 +29,11 @@ def modelAndTokenizerInitializer(pretrained_model,pretrained_tokenizer,seed):
     return                                      model,tokenizer,device
 
 
-def paraPharaseGenerator(sentence,each_para_count,model,tokenizer,device,pad_to_max_length=True,return_tensors="pt",do_sample=True,max_length=256,top_k=120,top_p=0.98,early_stopping=True):
+def paraPharaseGenerator(sentence,each_para_count,model,tokenizer,device,return_tensors="pt",do_sample=True,max_length=256,top_k=120,top_p=0.98,early_stopping=True):
     paraQuestionlist                            = []
-    text                                        = "paraphrase: " + sentence + " </s>"
+    text                                        = "paraphrase: " + sentence
 
-    encoding                                    = tokenizer.encode_plus(text, pad_to_max_length=pad_to_max_length, return_tensors=return_tensors)
+    encoding                                    = tokenizer.encode_plus(text, padding='longest', return_tensors=return_tensors)
     input_ids, attention_masks                  = encoding["input_ids"].to(device), encoding["attention_mask"].to(device)
 
     beam_outputs                                = model.generate(

@@ -1,7 +1,7 @@
 import setuptools
 
 
-with open('README.md') as f:
+with open('README.rst') as f:
     README                                = f.read()
 
 setuptools.setup(
@@ -10,7 +10,7 @@ setuptools.setup(
     name                                  ='databalancer',
     license                               ="MIT",
     description                           ='databalancer is the python library dedicated to balance the imbalanced text classification datasets before the model training in machine learning applications',
-    version                               ='v0.0.3',
+    version                               ='v0.0.4',
     long_description                      =README,
     url                                   ='https://github.com/pradeepdev-1995/databalancer',
     packages                              =['databalancer'],

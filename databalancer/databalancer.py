@@ -1,11 +1,18 @@
-import                                              pandas as pd
-from databalancer.paraphraseGeneratorClient import               paraPharaseGenerator
-from databalancer.paraphraseGeneratorClient import               modelAndTokenizerInitializer
-from databalancer.paraphraseInputGeneratorClient import          paraphraseInputSentenceGenerator
+import                                                              pandas as pd
+from databalancer.paraphraseGeneratorClient import                  paraPharaseGenerator
+from databalancer.paraphraseGeneratorClient import                  modelAndTokenizerInitializer
+from databalancer.paraphraseInputGeneratorClient import             paraphraseInputSentenceGenerator
+import matplotlib.pyplot                                            as plt
 
-
-import matplotlib.pyplot                            as plt
-
+'''
+Datset balancer function
+1 - identify the column names from an input dataset
+2 - Find the class with maximum text count
+3 - Identify the number of texts required for each class to meet the maximum value
+4 - Using t5_paraphraser generate as many as texts for each class to meet the maximum value
+5 - Depends on the saveAsCsv value,store the balanced dataset as balanced_data.csv to local machine or return the balanced pandas
+    dataframe to user
+'''
 def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/t5_paraphraser",pretrained_tokenizer="t5-base",seed=42):
     data                                            = pd.read_csv(dataset_name)
     model,tokenizer,device                          = modelAndTokenizerInitializer(pretrained_model,pretrained_tokenizer,seed)
@@ -21,8 +28,11 @@ def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/
     value_dict                                      = data[class_column].value_counts().to_dict()
 
     balanced_flag                                   = len(list(set(list(value_dict.values())))) == 1
-
+    print("Balancing started ")
+    iteration_count                                 = 0
     while not (balanced_flag):
+        iteration_count += 1
+        print("Iteration " + str(iteration_count) + "...")
         balanceCountDict                            = dict()
         max_key                                     = max(value_dict, key=value_dict.get)
         max_count                                   = value_dict[max_key]
@@ -60,6 +70,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/
 
         balanced_flag                               = len(list(set(list(value_dict.values())))) == 1
 
+    print("Dataset balancing completed")
 
     if(saveAsCsv):
         outfile                                     = "balanced_data.csv"

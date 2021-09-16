@@ -1,4 +1,7 @@
 
+'''
+Module for select the sentences for generating paraphrases
+'''
 
 def paraphraseInputSentenceGenerator(data,class_column,text_column,key):
     inputSentenceList                       = []
