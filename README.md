@@ -64,4 +64,4 @@ from databalancer import classCountVisualization
 classCountVisualization("balanced_data.csv")
 
 ```
-<img src="https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/balancedDataset.png" width="800" height="500">
+<img src="https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/images/balancedDataset.png" width="400" height="250">
