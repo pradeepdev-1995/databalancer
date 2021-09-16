@@ -21,7 +21,7 @@ Installation
 
 Install the `databalancer` package with `pip`
 
-    pip install databalancer
+    **pip install databalancer**
 
 Compatibility
 -------------
