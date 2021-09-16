@@ -2,8 +2,8 @@
 
 Databalancer is the python library using in machine learning applications to balance the imbalanced text classification datasets before the model training
 
+<img src="https://raw.githubusercontent.com/pradeepdev-1995/databalancer/master/logo/logo.png" width="800" height="250">
 
-![Data balancer logo](https://github.com/pradeepdev-1995/databalancer/blob/master/logo/logo.png?raw=true "Data balancer logo")
 ## Features
 
 * Databalancer is able to balance any imbalanced text classification datasets
