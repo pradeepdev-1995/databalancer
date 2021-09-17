@@ -27,8 +27,8 @@ setuptools.setup(
                                                 'transformers==4.9.1',
                                                 'matplotlib==3.3.3'
                                             ],
-    classifiers                           =[
-                                            'Development Status :: 4 - Beta',
+    classifiers                           = [
+                                            'Development Status :: 5 - Production/Stable',
                                             'License :: OSI Approved :: Apache Software License',
                                             'Programming Language :: Python :: 3.6',
                                             'Topic :: Software Development :: Libraries',
