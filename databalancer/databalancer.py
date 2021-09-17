@@ -32,7 +32,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/
     iteration_count                                 = 0
     while not (balanced_flag):
         iteration_count += 1
-        print("Iteration " + str(iteration_count) + "...")
+        print("Balancing iteration " + str(iteration_count) + "...")
         balanceCountDict                            = dict()
         max_key                                     = max(value_dict, key=value_dict.get)
         max_count                                   = value_dict[max_key]
