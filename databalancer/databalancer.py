@@ -1,7 +1,9 @@
 import                                                              pandas as pd
-from databalancer.paraphraseGeneratorClient import                  paraPharaseGenerator
+from databalancer.paraphraseGeneratorClient import                  paraPharaseGeneratorT5
 from databalancer.paraphraseGeneratorClient import                  modelAndTokenizerInitializer
 from databalancer.paraphraseInputGeneratorClient import             paraphraseInputSentenceGenerator
+from paraphraseGeneratorUsingNlpAug import                          paraPharaseGeneratorNlpAug
+from paraphraseGeneratorUsingTextAttack import                      paraPharaseGeneratorTextAttack
 import matplotlib.pyplot                                            as plt
 
 '''
@@ -13,9 +15,9 @@ Datset balancer function
 5 - Depends on the saveAsCsv value,store the balanced dataset as balanced_data.csv to local machine or return the balanced pandas
     dataframe to user
 '''
-def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/t5_paraphraser",pretrained_tokenizer="t5-base",seed=42):
+def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,seed=42):
     data                                            = pd.read_csv(dataset_name)
-    model,tokenizer,device                          = modelAndTokenizerInitializer(pretrained_model,pretrained_tokenizer,seed)
+    sentence                                        = ""
     columnList                                      = list()
     for col in data.columns:
         columnList.append(col)
@@ -30,6 +32,12 @@ def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/
     balanced_flag                                   = len(list(set(list(value_dict.values())))) == 1
     print("Balancing started ")
     iteration_count                                 = 0
+    if (balance_method == 1):
+        pretrained_model                            = "ramsrigouthamg/t5_paraphraser"
+    elif (balance_method == 2):
+        pretrained_model                            = "ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"
+
+    model, tokenizer, device                        = modelAndTokenizerInitializer(pretrained_model, seed)
     while not (balanced_flag):
         iteration_count += 1
         print("Balancing iteration " + str(iteration_count) + "...")
@@ -44,7 +52,6 @@ def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/
         for key, value in balanceCountDict.items():
             if (value != 0):
                 inputSentenceList                   = paraphraseInputSentenceGenerator(data,class_column,text_column,key)
-
                 if (value < 5):
                     each_para_count                 = 1
                     inputSentenceList               = inputSentenceList[:value]
@@ -53,9 +60,24 @@ def balanceDataset(dataset_name,saveAsCsv=True,pretrained_model="ramsrigouthamg/
 
                 paraQuestionlist                    = []
 
-                for sentence in inputSentenceList:
-                    paraQuestionlist                = paraPharaseGenerator(sentence,each_para_count,model,tokenizer,device)
-
+                if(balance_method==1 or balance_method==2):
+                    for sentence in inputSentenceList:
+                        eachparaQuestionlist        = paraPharaseGeneratorT5(sentence,each_para_count,model,tokenizer,device)
+                        paraQuestionlist.extend(eachparaQuestionlist)
+                elif(balance_method==3):
+                    for sentence in inputSentenceList:
+                        eachparaQuestionlist        = paraPharaseGeneratorNlpAug(sentence, each_para_count, model)
+                        paraQuestionlist.extend(eachparaQuestionlist)
+                elif(balance_method==4):
+                    for sentence in inputSentenceList:
+                        eachparaQuestionlist        = paraPharaseGeneratorTextAttack(sentence)
+                        paraQuestionlist.extend(eachparaQuestionlist)
+                else:
+                    pass
+                if (len(paraQuestionlist)==0):
+                    paraQuestionlist.append(sentence)
+                else:
+                    pass
                 paraFrame                           =   {
                                                         text_column: paraQuestionlist,
                                                         class_column: key
