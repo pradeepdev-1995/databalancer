@@ -1,6 +1,6 @@
 import                                          torch
 from transformers import                        T5ForConditionalGeneration,T5Tokenizer
-from modelQuantization import                   quantizeModel
+from databalancer.modelQuantization import      quantizeModel
 
 pretrained_model                                = "ramsrigouthamg/t5_paraphraser"
 t5_paraphraser_model                            = quantizeModel(pretrained_model)
