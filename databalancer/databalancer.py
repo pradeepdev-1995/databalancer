@@ -1,10 +1,10 @@
-import                                                              pandas as pd
-from databalancer.paraphraseGeneratorClient import                  paraPharaseGeneratorT5
-from databalancer.paraphraseGeneratorClient import                  modelAndTokenizerInitializer
-from databalancer.paraphraseInputGeneratorClient import             paraphraseInputSentenceGenerator
-from paraphraseGeneratorUsingNlpAug import                          paraPharaseGeneratorNlpAug
-from paraphraseGeneratorUsingTextAttack import                      paraPharaseGeneratorTextAttack
-import matplotlib.pyplot                                            as plt
+import                                                 pandas as pd
+from paraphraseGeneratorClient import                  paraPharaseGeneratorT5
+from paraphraseGeneratorClient import                  modelAndTokenizerInitializer
+from paraphraseInputGeneratorClient import             paraphraseInputSentenceGenerator
+from paraphraseGeneratorUsingNlpAug import             paraPharaseGeneratorNlpAug
+from paraphraseGeneratorUsingTextAttack import         paraPharaseGeneratorTextAttack
+import matplotlib.pyplot                               as plt
 
 '''
 Datset balancer function
