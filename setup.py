@@ -21,7 +21,7 @@ setuptools.setup(
                                                 'pandas==1.1.4',
                                                 'pytorch-lightning==0.7.5',
                                                 'pytorch-transformers==1.1.0',
-                                                'torch==1.8.0',
+                                                'torch==1.12.0',
                                                 'torchfile==0.1.0',
                                                 'pytorch-lightning==0.7.5',
                                                 'transformers==4.9.1',
