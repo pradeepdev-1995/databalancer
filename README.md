@@ -10,6 +10,13 @@ Databalancer is the python library using in machine learning applications to bal
 * If the given dataset is imbalanced then while balancing no existing data is removed, but new data will be generated and added to the dataset
 * For a particular class the newly generated data will be the paraphrases of the existing data in that particular class
 * By default these paraphrases are generated using the *ramsrigouthamg/t5_paraphraser* model (You can read more about the model from [Huggingface official documentation](https://huggingface.co/ramsrigouthamg/t5_paraphraser))
+* The current version can generate the sentence paraphrases using multiple methods such as T5 models, NLPAUG and Textattack
+* The user can select the balance method by passing the `balance_method` parameter while calling the `balanceDataset` method such as
+  * `balance_method=1` for `ramsrigouthamg/t5_paraphraser` T5 model based balancing (Default) ( For more info check [t5_paraphraser](https://huggingface.co/ramsrigouthamg/t5_paraphraser))
+  * `balance_method=2` for `ramsrigouthamg/t5-large-paraphraser-diverse-high-quality` T5 model based balancing (For more info check [t5-large-paraphraser-diverse-high-quality](https://huggingface.co/ramsrigouthamg/t5-large-paraphraser-diverse-high-quality))
+  * `balance_method=3` for `nlpaug` based balancing (For more info check [nlpaug](https://pypi.org/project/nlpaug/))
+  * `balance_method=4` for `textattack` based balancing (For more info check [textattack](https://pypi.org/project/textattack/))
+* The T5 models are going through the quantization process using [fastT5](https://pypi.org/project/fastt5/) before inference so that the model inference time will be reduced
 * Databalancer also provides another method called *classCountVisualization* to show the dataset class count distribution
 
 ## Installation
@@ -51,7 +58,7 @@ classCountVisualization("traindata.csv")
 from databalancer import balanceDataset
 
 #Pass the dataset name which is to be balanced(here traindata.csv) to the balanceDataset function
-balanceDataset("traindata.csv")
+balanceDataset("traindata.csv",balance_method=1)
 ```
 
 The above code will balance the dataset and store the balanced dataset(*'balanced_data.csv'*) in the local machine.
