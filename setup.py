@@ -10,7 +10,7 @@ setuptools.setup(
     name                                  ='databalancer',
     license                               ='Apache License 2.0',
     description                           ='Databalancer is the python library dedicated to balance the imbalanced text classification datasets before the model training in machine learning applications',
-    version                               ='v0.1.6',
+    version                               ='v0.1.7',
     long_description                      =README,
     long_description_content_type         ='text/markdown',
     url                                   ='https://github.com/pradeepdev-1995/databalancer',
@@ -32,7 +32,8 @@ setuptools.setup(
                                                 'pyRFC3339==1.0',
                                                 'nlpaug==1.1.10',
                                                 'textattack==0.3.5',
-                                                'fastt5==0.1.4'
+                                                'fastt5==0.1.4',
+                                                'tensorflow-text==2.9.0'
 
                                             ],
     classifiers                           = [
