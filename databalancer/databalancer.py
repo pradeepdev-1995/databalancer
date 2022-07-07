@@ -35,6 +35,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
     if (balance_method == 2):
         pretrained_model                            = "ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"
         print("Balancing using \"ramsrigouthamg/t5-large-paraphraser-diverse-high-quality\" T5 model ")
+        model, tokenizer, device                    = modelAndTokenizerInitializer(pretrained_model, quantize, seed)
     elif(balance_method == 3):
         print("Balancing using NLPAUG")
     elif(balance_method == 4):
@@ -42,8 +43,9 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
     else:
         pretrained_model = "ramsrigouthamg/t5_paraphraser"
         print("Balancing using \"ramsrigouthamg/t5_paraphraser\" T5 model ")
+        model, tokenizer, device                    = modelAndTokenizerInitializer(pretrained_model, quantize, seed)
 
-    model, tokenizer, device                        = modelAndTokenizerInitializer(pretrained_model,quantize,seed)
+
     while not (balanced_flag):
         iteration_count += 1
         print("Balancing iteration " + str(iteration_count) + "...")
