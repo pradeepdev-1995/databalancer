@@ -8,4 +8,6 @@ def paraPharaseGeneratorTextAttack(sentence):
     paraQuestionlist                = easy_aug.augment(sentence)
     print("paraQuestionlist")
     print(paraQuestionlist)
+    print("type")
+    print(type(paraQuestionlist))
     return paraQuestionlist
