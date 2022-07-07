@@ -15,7 +15,7 @@ Datset balancer function
 5 - Depends on the saveAsCsv value,store the balanced dataset as balanced_data.csv to local machine or return the balanced pandas
     dataframe to user
 '''
-def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,seed=42):
+def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,seed=42,model="bert-base-uncased"):
     data                                            = pd.read_csv(dataset_name)
     sentence                                        = ""
     columnList                                      = list()
