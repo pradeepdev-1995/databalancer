@@ -32,10 +32,16 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
     balanced_flag                                   = len(list(set(list(value_dict.values())))) == 1
     print("Balancing started ")
     iteration_count                                 = 0
-    if (balance_method == 1):
-        pretrained_model                            = "ramsrigouthamg/t5_paraphraser"
-    elif (balance_method == 2):
+    if (balance_method == 2):
         pretrained_model                            = "ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"
+        print("Balancing using \"ramsrigouthamg/t5-large-paraphraser-diverse-high-quality\" T5 model ")
+    elif(balance_method == 3):
+        print("Balancing using NLPAUG")
+    elif(balance_method == 4):
+        print("Balancing using TextAttack")
+    else:
+        pretrained_model = "ramsrigouthamg/t5_paraphraser"
+        print("Balancing using \"ramsrigouthamg/t5_paraphraser\" T5 model ")
 
     model, tokenizer, device                        = modelAndTokenizerInitializer(pretrained_model,quantize,seed)
     while not (balanced_flag):
@@ -60,11 +66,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
 
                 paraQuestionlist                    = []
 
-                if(balance_method==1 or balance_method==2):
-                    for sentence in inputSentenceList:
-                        eachparaQuestionlist        = paraPharaseGeneratorT5(sentence,each_para_count,model,tokenizer,device)
-                        paraQuestionlist.extend(eachparaQuestionlist)
-                elif(balance_method==3):
+                if(balance_method==3):
                     for sentence in inputSentenceList:
                         eachparaQuestionlist        = paraPharaseGeneratorNlpAug(sentence, each_para_count, model)
                         paraQuestionlist.extend(eachparaQuestionlist)
@@ -73,7 +75,10 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
                         eachparaQuestionlist        = paraPharaseGeneratorTextAttack(sentence)
                         paraQuestionlist.extend(eachparaQuestionlist)
                 else:
-                    pass
+                    for sentence in inputSentenceList:
+                        eachparaQuestionlist        = paraPharaseGeneratorT5(sentence,each_para_count,model,tokenizer,device)
+                        paraQuestionlist.extend(eachparaQuestionlist)
+
                 if (len(paraQuestionlist)==0):
                     paraQuestionlist.append(sentence)
                 else:
