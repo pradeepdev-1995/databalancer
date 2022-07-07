@@ -88,6 +88,8 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
                     paraQuestionlist.append(sentence)
                 else:
                     pass
+                print("paraQuestionlist outside length")
+                print(len(paraQuestionlist))
                 paraFrame                           =   {
                                                         text_column: paraQuestionlist,
                                                         class_column: key

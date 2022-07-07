@@ -10,4 +10,6 @@ def paraPharaseGeneratorTextAttack(sentence):
     print(paraQuestionlist)
     print("type")
     print(type(paraQuestionlist))
+    print("length")
+    print(len(paraQuestionlist))
     return paraQuestionlist
