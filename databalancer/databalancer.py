@@ -15,7 +15,7 @@ Datset balancer function
 5 - Depends on the saveAsCsv value,store the balanced dataset as balanced_data.csv to local machine or return the balanced pandas
     dataframe to user
 '''
-def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,seed=42):
+def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,seed=42):
     data                                            = pd.read_csv(dataset_name)
     sentence                                        = ""
     columnList                                      = list()
@@ -37,7 +37,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,seed=42):
     elif (balance_method == 2):
         pretrained_model                            = "ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"
 
-    model, tokenizer, device                        = modelAndTokenizerInitializer(pretrained_model, seed)
+    model, tokenizer, device                        = modelAndTokenizerInitializer(pretrained_model,quantize,seed)
     while not (balanced_flag):
         iteration_count += 1
         print("Balancing iteration " + str(iteration_count) + "...")

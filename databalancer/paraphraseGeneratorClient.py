@@ -1,15 +1,6 @@
 import                                          torch
 from transformers import                        T5ForConditionalGeneration,T5Tokenizer
 from databalancer.modelQuantization import      quantizeModel
-
-pretrained_model                                = "ramsrigouthamg/t5_paraphraser"
-t5_paraphraser_model                            = quantizeModel(pretrained_model)
-tokenizer_t5_paraphraser                        = T5Tokenizer.from_pretrained(pretrained_model)
-
-pretrained_model                                = "ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"
-t5_paraphraser_model_high_quality               = quantizeModel(pretrained_model)
-tokenizer_model_high_quality                    = T5Tokenizer.from_pretrained(pretrained_model)
-
 device                                          = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -32,15 +23,12 @@ def set_seed(seed):
 
 
 
-def modelAndTokenizerInitializer(pretrained_model,seed):
-    if(pretrained_model=="ramsrigouthamg/t5_paraphraser"):
-        model                                   = t5_paraphraser_model
-        tokenizer                               = tokenizer_t5_paraphraser
-    elif(pretrained_model=="ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"):
-        model                                   = t5_paraphraser_model_high_quality
-        tokenizer                               = tokenizer_model_high_quality
+def modelAndTokenizerInitializer(pretrained_model,quantize,seed):
+    if(quantize):
+        model                                   = quantizeModel(pretrained_model)
     else:
         model                                   = T5ForConditionalGeneration.from_pretrained(pretrained_model)
+    tokenizer                                   = T5Tokenizer.from_pretrained(pretrained_model)
 
     model                                       = model.to(device)
     set_seed(seed)
