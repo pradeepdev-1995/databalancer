@@ -30,7 +30,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
     value_dict                                      = data[class_column].value_counts().to_dict()
 
     balanced_flag                                   = len(list(set(list(value_dict.values())))) == 1
-    print("Balancing started ")
+    print("Balancing started ..")
     iteration_count                                 = 0
     if (balance_method == 2):
         pretrained_model                            = "ramsrigouthamg/t5-large-paraphraser-diverse-high-quality"
@@ -48,7 +48,10 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
 
     while not (balanced_flag):
         iteration_count += 1
-        print("Balancing iteration " + str(iteration_count) + "...")
+        if(iteration_count%10==0):
+            print("Balancing iteration " + str(iteration_count) + "...")
+        else:
+            pass
         balanceCountDict                            = dict()
         max_key                                     = max(value_dict, key=value_dict.get)
         max_count                                   = value_dict[max_key]
