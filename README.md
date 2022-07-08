@@ -16,7 +16,8 @@ Databalancer is the python library using in machine learning applications to bal
   * `balance_method=2` for `ramsrigouthamg/t5-large-paraphraser-diverse-high-quality` T5 model based balancing (For more info check [t5-large-paraphraser-diverse-high-quality](https://huggingface.co/ramsrigouthamg/t5-large-paraphraser-diverse-high-quality))
   * `balance_method=3` for `nlpaug` based balancing (For more info check [nlpaug](https://pypi.org/project/nlpaug/))
   * `balance_method=4` for `textattack` based balancing (For more info check [textattack](https://pypi.org/project/textattack/))
-* If the user enable `quantize=True` in `balanceDataset` then the T5 models will go through the quantization process using [fastT5](https://pypi.org/project/fastt5/) before inference, so that the model inference time will be reduced.
+* The `model` argument in the `balanceDataset` method is only applicable when `balance_method` is set as `3`, through which user can pass the transformer model name from [Huggingface](https://huggingface.co/models) to generate paraphrases using NLPAUG .
+* If the user enable `quantize=True` in `balanceDataset` then the T5 models(`balance_method==1` and `balance_method=2`) will go through the quantization process using [fastT5](https://pypi.org/project/fastt5/) before inference, so that the model inference time will be reduced.
 * By default `quantize` parameter is set as `False` because quantization requires more RAM and more CPU Processing power
 * Databalancer also provides another method called *classCountVisualization* to show the dataset class count distribution
 

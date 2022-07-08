@@ -25,6 +25,7 @@ def set_seed(seed):
 
 def modelAndTokenizerInitializer(pretrained_model,quantize,seed):
     if(quantize):
+        print("Quantization started... It will take some minutes depends on the RAM size and processing power of the machine")
         model                                   = quantizeModel(pretrained_model)
     else:
         model                                   = T5ForConditionalGeneration.from_pretrained(pretrained_model)
