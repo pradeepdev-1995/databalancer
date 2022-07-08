@@ -77,7 +77,7 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
                         paraQuestionlist.extend(eachparaQuestionlist)
                 elif(balance_method==4):
                     for sentence in inputSentenceList:
-                        eachparaQuestionlist        = paraPharaseGeneratorTextAttack(sentence)
+                        eachparaQuestionlist        = paraPharaseGeneratorTextAttack(sentence,each_para_count)
                         paraQuestionlist.extend(eachparaQuestionlist)
                 else:
                     for sentence in inputSentenceList:
@@ -88,8 +88,6 @@ def balanceDataset(dataset_name,saveAsCsv=True,balance_method=1,quantize=False,s
                     paraQuestionlist.append(sentence)
                 else:
                     pass
-                print("paraQuestionlist outside length")
-                print(len(paraQuestionlist))
                 paraFrame                           =   {
                                                         text_column: paraQuestionlist,
                                                         class_column: key

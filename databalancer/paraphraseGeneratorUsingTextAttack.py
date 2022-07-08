@@ -1,15 +1,15 @@
 import textattack
 from textattack.augmentation import EasyDataAugmenter
-easy_aug = EasyDataAugmenter()
 
 
-def paraPharaseGeneratorTextAttack(sentence):
-    paraQuestionlist                = []
+
+def paraPharaseGeneratorTextAttack(sentence,each_para_count):
+    easy_aug                        = EasyDataAugmenter(transformations_per_example=each_para_count)
+    paraQuestionlistActual          = []
     paraQuestionlist                = easy_aug.augment(sentence)
-    print("paraQuestionlist")
-    print(paraQuestionlist)
-    print("type")
-    print(type(paraQuestionlist))
-    print("length")
-    print(len(paraQuestionlist))
-    return paraQuestionlist
+    res                             = isinstance(paraQuestionlist, str)
+    if (res):
+        paraQuestionlistActual.append(paraQuestionlist)
+    else:
+        paraQuestionlistActual      = paraQuestionlist
+    return paraQuestionlistActual
